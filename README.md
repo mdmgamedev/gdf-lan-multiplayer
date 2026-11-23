@@ -2,7 +2,7 @@
 
 ## Prerequisities
  - Visual Studio Community 2022
- - Dotnet (the latest available version)
+ - Dotnet 9.0
  - A userdir without spaces (if you userdir has spaces you will have to run it from C:)
 
 ## Credits
