@@ -1,0 +1,48 @@
+﻿<Project>
+  <!--
+    De build-regels van GDF: welke bestanden er mee moeten naar de map waar het spel draait.
+    Dit bestand hoort bij GDF en wordt door update-gdf.bat bijgewerkt. Niet zelf aanpassen.
+  -->
+  <PropertyGroup>
+    <GdfOpWindows Condition="'$(GdfOpWindows)' == ''">$([MSBuild]::IsOSPlatform('Windows'))</GdfOpWindows>
+    <GdfZonderWindows>$([System.Text.RegularExpressions.Regex]::Replace('$(TargetFrameworks)', '[^;]*-windows[^;]*', '').Trim(';').Replace(';;', ';'))</GdfZonderWindows>
+    <!--
+      update-gdf.bat bewaart de vorige versie als lib-oud-<versie> in de projectmap. Die map hoort niet bij het project:
+      anders vindt de build daar ook een GDF.dll, en kiest hij de oude (lib-oud komt op alfabet voor lib).
+    -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);lib-oud-*/**</DefaultItemExcludes>
+  </PropertyGroup>
+  <!--
+    Voor projecten van voor oktober 2026, die nog een Windows-variant (net8.0-windows) naast net8.0 hebben:
+    buiten Windows valt die weg. Dan kiezen 'dotnet run' en de editor (VS Code, Rider)
+    vanzelf de variant die op Linux en macOS draait, zonder dat je het projectbestand hoeft aan te passen.
+  -->
+  <PropertyGroup Condition="'$(GdfOpWindows)' != 'true' And '$(GdfZonderWindows)' != '' And $(GdfZonderWindows.Contains(';'))">
+    <TargetFrameworks>$(GdfZonderWindows)</TargetFrameworks>
+  </PropertyGroup>
+  <!-- Blijft er Ã©Ã©n over, dan als TargetFramework (enkelvoud): anders vraagt 'dotnet run' alsnog om -f -->
+  <PropertyGroup Condition="'$(GdfOpWindows)' != 'true' And '$(GdfZonderWindows)' != '' And !$(GdfZonderWindows.Contains(';'))">
+    <TargetFramework>$(GdfZonderWindows)</TargetFramework>
+    <TargetFrameworks></TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="GDF"><HintPath>$(MSBuildThisFileDirectory)GDF.dll</HintPath></Reference>
+    <Reference Include="UrhoDotNet"><HintPath>$(MSBuildThisFileDirectory)UrhoDotNet.dll</HintPath></Reference>
+    <PackageReference Include="ExcelDataReader" Version="3.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <!-- Avalonia: het configuratievenster (Game.Settings.ShowConfigurationForm) op Windows, Linux en macOS -->
+    <PackageReference Include="Avalonia" Version="11.3.22" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.22" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.22" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)GdfData\**" Link="Data\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)CoreData\**" Link="CoreData\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)native\Urho3D.dll" Link="Urho3D.dll" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)native\libUrho3D.so" Link="libUrho3D.so" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(MSBuildThisFileDirectory)native\libUrho3D.dylib" Link="libUrho3D.dylib" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+  </ItemGroup>
+</Project>

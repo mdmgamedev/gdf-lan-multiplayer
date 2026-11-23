@@ -1,0 +1,8 @@
+﻿GDF_start
+Gemaakt met GDF 26.1a - https://gdf.acits.nl
+
+Openen: dubbelklik op GDF_start.csproj (Visual Studio 2022) en druk op F5.
+Nodig: Visual Studio 2022 met .NET 8.
+
+Nieuwe versie van GDF? Start update-gdf.bat. Maak eerst een backup van je project.
+GDF zelf staat in de map lib; je eigen code blijft bij een update ongemoeid.

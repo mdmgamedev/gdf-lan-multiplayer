@@ -1,0 +1,25 @@
+<particleeffect>
+	<material name="GDF/Materials/Particle.xml" />
+	<numparticles value="250" />
+	<updateinvisible enable="true" />
+	<relative enable="false" />
+	<scaled enable="true" />
+	<sorted enable="false" />
+	<emittertype value="Sphere" />
+	<emittersize value="0.4 0.4 0.4" />
+	<direction min="-1 -0.3 -1" max="1 1 1" />
+	<constantforce value="0 1 0" />
+	<dampingforce value="4" />
+	<activetime value="0.15" />
+	<inactivetime value="100000" />
+	<emissionrate min="1500" max="1500" />
+	<particlesize min="0.5 0.5" max="1 1" />
+	<timetolive min="0.5" max="0.9" />
+	<velocity min="3" max="8" />
+	<rotationspeed min="-180" max="180" />
+	<sizedelta add="0" mul="1.2" />
+	<colorfade color="3 2.5 1.5 1" time="0" />
+	<colorfade color="2 0.8 0.2 1" time="0.2" />
+	<colorfade color="0.6 0.15 0.02 1" time="0.5" />
+	<colorfade color="0 0 0 0" time="0.9" />
+</particleeffect>

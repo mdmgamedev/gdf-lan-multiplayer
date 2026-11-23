@@ -1,0 +1,22 @@
+<particleeffect>
+	<material name="GDF/Materials/Smoke.xml" />
+	<numparticles value="100" />
+	<updateinvisible enable="false" />
+	<relative enable="false" />
+	<scaled enable="true" />
+	<sorted enable="true" />
+	<emittertype value="Sphere" />
+	<emittersize value="0.5 0 0.5" />
+	<direction min="-0.3 0.5 -0.3" max="0.3 1 0.3" />
+	<constantforce value="0 -0.3 0" />
+	<dampingforce value="0.5" />
+	<emissionrate min="12" max="14" />
+	<particlesize min="0.5 0.5" max="0.7 0.7" />
+	<timetolive min="3" max="4" />
+	<velocity min="0.2" max="0.6" />
+	<rotationspeed min="-10" max="10" />
+	<sizedelta add="0" mul="1.5" />
+	<colorfade color="0.8 0.65 0.45 0" time="0" />
+	<colorfade color="0.8 0.65 0.45 0.4" time="0.5" />
+	<colorfade color="0.85 0.75 0.6 0" time="4" />
+</particleeffect>

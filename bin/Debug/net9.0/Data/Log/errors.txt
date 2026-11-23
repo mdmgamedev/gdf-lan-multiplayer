@@ -1,0 +1,17 @@
+Error - 18:43
+De gegeven sleutel is niet aanwezig in het woordenboek.
+   bij System.ThrowHelper.ThrowKeyNotFoundException()
+   bij System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   bij GDF.DataBase.GetBool(String key) in C:\Users\vd\Google Drive\C# GDF\Versie 2020\src20.04\GDF_src\DataBase.cs:regel 135
+   bij GDF_example_mplay.room_lobby.Step() in C:\Users\vd\Google Drive\C# GDF\Versie 2020\src20.04\GDF_example_mplay\room_lobby.cs:regel 55
+   bij GDF.Room.gdf_Update() in C:\Users\vd\Google Drive\C# GDF\Versie 2020\src20.04\GDF_src\gdf_Room\Room.cs:regel 331
+   bij GDF.RoomMultiplay.gdf_Update() in C:\Users\vd\Google Drive\C# GDF\Versie 2020\src20.04\GDF_src\Multiplay\RoomMultiplay.cs:regel 314
+   bij GDF.Window.OnUpdate(Single timeStep) in C:\Users\vd\Google Drive\C# GDF\Versie 2020\src20.04\GDF_src\Window.cs:regel 168
+   bij Urho.Application.HandleUpdate(UpdateEventArgs args)
+   bij Urho.Engine.<>c__DisplayClass103_0.<SubscribeToUpdate>b__0(IntPtr x)
+   bij Urho.UrhoObject.ObjectCallback(IntPtr data, Int32 stringHash, IntPtr variantMap)
+   bij Urho.Application.Application_Run(IntPtr handle)
+   bij GDF.Game.Run(Type roomType) in C:\Users\vd\Google Drive\C# GDF\Versie 2020\src20.04\GDF_src\Game.cs:regel 370
+
+
+
